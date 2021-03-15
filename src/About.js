@@ -8,7 +8,7 @@ class About extends React.Component {
   changeColor = () => {
     this.setState({ color: "RED" });
   };
-  getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props, state) {
     return { color: props.color };
   }
   shouldComponentUpdate() {
@@ -44,6 +44,10 @@ class About extends React.Component {
       </div>
     );
     return element;
+  }
+
+  componentWillUnmount() {
+    alert("The component named Header is about to be unmounted.");
   }
 }
 
