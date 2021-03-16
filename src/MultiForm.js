@@ -12,25 +12,51 @@ class MultiForm extends React.Component {
     super(props);
     this.state = {
       username: "",
-      age: null
+      age: null,
+      description: "The content of a textarea goes in the value attribute",
+      errormessage: ""
     };
   }
+  onSubmitForm = event => {
+    event.preventDefault();
+    let age = this.state.age;
+    // if (!Number(age)) {
+    //   alert("Your age must be a number");
+    // }
+  };
   onChanges = event => {
     let name = event.target.name;
     let val = event.target.value;
+    let err = "";
+    if (name === "age") {
+      if (val != "" && !Number(val)) {
+        err = <strong>Your age must be a number</strong>;
+      }
+    }
+    this.setState({ errormessage: err });
     this.setState({ [name]: val });
+
     console.log("this.val", this.state);
   };
   render() {
     return (
-      <form>
+      <form onSubmit={this.onSubmitForm}>
         <h1>
           Hello {this.state.username} {this.state.age}
         </h1>
         <p>Enter your name:</p>
         <input type="text" onChange={this.onChanges} name="username" />
         <p>Enter your age:</p>
-        <input type="number" onChange={this.onChanges} name="age" />
+        <input type="text" onChange={this.onChanges} name="age" />
+        {this.state.errormessage}
+        <p>Enter your age:</p>
+        <input type="text" onChange={this.onChanges} name="age" />
+        {this.state.errormessage}
+        <p>Enter your description:</p>
+        <textarea value={this.state.description} />
+        <p>
+          <button type="submit">Submit</button>
+        </p>
       </form>
     );
   }
