@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import Contact from "./Contact";
 import About from "./About";
+import MultiForm from "./MultiForm";
 
 // export default function App() {
 //   return (
@@ -30,6 +31,9 @@ class App extends React.Component {
             <li>
               <Link to="/about">About</Link>
             </li>
+            <li>
+              <Link to="/multiForm">MultiForm</Link>
+            </li>
           </ul>
 
           <hr />
@@ -50,6 +54,9 @@ class App extends React.Component {
             </Route>
             <Route path="/about">
               <About color="yellow" />
+            </Route>
+            <Route path="/multiForm">
+              <MultiForm />
             </Route>
           </Switch>
         </div>
