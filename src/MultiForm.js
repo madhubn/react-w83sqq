@@ -13,6 +13,7 @@ class MultiForm extends React.Component {
     this.state = {
       username: "",
       age: null,
+      mycar: "Volvo",
       description: "The content of a textarea goes in the value attribute",
       errormessage: ""
     };
@@ -39,12 +40,18 @@ class MultiForm extends React.Component {
     console.log("this.val", this.state);
   };
   render() {
+    const mystyle = {
+      color: "white",
+      backgroundColor: "DodgerBlue",
+      padding: "10px",
+      fontFamily: "Arial"
+    };
     return (
       <form onSubmit={this.onSubmitForm}>
         <h1>
           Hello {this.state.username} {this.state.age}
         </h1>
-        <p>Enter your name:</p>
+        <p style={{ color: "red" }}>Enter your name:</p>
         <input type="text" onChange={this.onChanges} name="username" />
         <p>Enter your age:</p>
         <input type="text" onChange={this.onChanges} name="age" />
@@ -53,9 +60,18 @@ class MultiForm extends React.Component {
         <input type="text" onChange={this.onChanges} name="age" />
         {this.state.errormessage}
         <p>Enter your description:</p>
-        <textarea value={this.state.description} />
+        <textarea style={mystyle} value={this.state.description} />
         <p>
-          <button type="submit">Submit</button>
+          <select value={this.state.mycar}>
+            <option value="Ford">Ford</option>
+            <option value="Volvo">Volvo</option>
+            <option value="Fiat">Fiat</option>
+          </select>
+        </p>
+        <p>
+          <button type="submit" style={{ backgroundColor: "lightblue" }}>
+            Submit
+          </button>
         </p>
       </form>
     );
