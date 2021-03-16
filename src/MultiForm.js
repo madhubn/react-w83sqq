@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from "./mystyle.module.css";
 /* 
 1. We can control the values of multiple input controls bt adding name   attribute to each element.
 2. when you initialize the state in the contructor, use the filed names
@@ -53,14 +53,17 @@ class MultiForm extends React.Component {
         </h1>
         <p style={{ color: "red" }}>Enter your name:</p>
         <input type="text" onChange={this.onChanges} name="username" />
+
         <p>Enter your age:</p>
-        <input type="text" onChange={this.onChanges} name="age" />
-        {this.state.errormessage}
-        <p>Enter your age:</p>
-        <input type="text" onChange={this.onChanges} name="age" />
+        <input
+          style={mystyle}
+          type="text"
+          onChange={this.onChanges}
+          name="age"
+        />
         {this.state.errormessage}
         <p>Enter your description:</p>
-        <textarea style={mystyle} value={this.state.description} />
+        <textarea className={styles.bigblue} value={this.state.description} />
         <p>
           <select value={this.state.mycar}>
             <option value="Ford">Ford</option>
